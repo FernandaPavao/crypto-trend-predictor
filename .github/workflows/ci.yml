@@ -1,0 +1,37 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+          cache: pip
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+
+      # Lints e testes são opcionais. Mantive “tolerantes” para não quebrar o primeiro run.
+      - name: Lint (flake8 opcional)
+        run: |
+          pip install flake8 || true
+          flake8 --ignore=E501 || true
+
+      - name: Smoke check
+        run: |
+          python -V
+          ls -R
