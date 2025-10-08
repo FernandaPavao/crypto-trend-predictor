@@ -1,0 +1,13 @@
+# ambientes / segredos
+venv/
+.env
+*.env
+
+# caches e artefatos
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.DS_Store
+
+# VS Code (opcional)
+.vscode/

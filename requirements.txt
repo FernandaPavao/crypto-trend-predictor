@@ -1,0 +1,13 @@
+pandas
+numpy
+scikit-learn
+matplotlib
+seaborn
+psycopg2-binary
+fastapi
+uvicorn
+streamlit
+pydantic
+python-multipart
+requests
+plotly
